@@ -2,6 +2,7 @@
   "name": "videocontentappbackend",
   "version": "1.0.0",
   "description": "A Basic Video Sharing Platform",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +13,9 @@
     "backend"
   ],
   "author": "Yash Grover",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5"
+  }
 }
