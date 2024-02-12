@@ -1,6 +1,6 @@
 //a default template for error 
 class ApiError extends Error{
-    constructor(statusCode, message="Something Went Wrong", errors=[], statck=""){
+    constructor(statusCode, message="Something Went Wrong", errors=[], stack=""){
         super(message)
         this.statusCode = statusCode
         this.data = null
@@ -8,8 +8,8 @@ class ApiError extends Error{
         this.success = false
         this.errors = this.errors
 
-        if(statck){
-            this.statck = statck
+        if(stack){
+            this.stack = stack
         }else{
             Error.captureStackTrace(this,this.constructor)
         }
