@@ -8,7 +8,7 @@ cloudinary.config({
 });
 
 //takes a file from the local server and uploads it on Cloudinary
-const uploadOnCloudinary = async(localFilePath) =>{
+export const uploadOnCloudinary = async(localFilePath) =>{
     try {
         //check if there's no localFilePath return null
         if(!localFilePath) return null
@@ -23,3 +23,4 @@ const uploadOnCloudinary = async(localFilePath) =>{
         return null;
     }
 }
+
