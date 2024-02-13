@@ -2,7 +2,7 @@
 const asyncHandler = (requestHandler) => (req, res, next) => {
     // Wrap the execution of the requestHandler function in a Promise.resolve() call
     // This ensures that the requestHandler function always returns a promise
-    Promise.resolve(requestHandler(req, res, next))
+    return Promise.resolve(requestHandler(req, res, next))
         // If the promise returned by requestHandler resolves successfully, do nothing
         .catch((err) => console.log(err)); // If the promise returned by requestHandler rejects with an error,
                                           // log the error to the console
