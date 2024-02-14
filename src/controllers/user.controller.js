@@ -25,10 +25,21 @@ const registerUser = asyncHandler( async (req,res) => {
     throw new ApiError(409, "User with Email or Username already exists.")
    }
 
+   console.log(req.files)
    //STEP4 - Checking for Avatar and CoverImage -  (If correctly stored in local server or not)
    const avatarLocalPath = req.files?.avatar[0]?.path
-   const coverImageLocalPath = req.files?.coverImage[0]?.path;
+   console.log(avatarLocalPath)
+   
+    //const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    //this check is for Cover Image
+    let coverImageLocalPath;
+    if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
+
+   //this check is for Avatar Image
    if(!avatarLocalPath){
+    console.log("LocalPath not found")
     throw new ApiError(400, "Avatar file is required.")
    }
 
@@ -39,7 +50,7 @@ const registerUser = asyncHandler( async (req,res) => {
    //STEP6 - Create User Entry in DB 
    const user = await User.create({
     fullName,
-    avatar:avatar,
+    avatar:avatar.url,
     coverImage:coverImage?.url || "",
     email,
     password,
